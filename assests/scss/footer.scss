@@ -1,0 +1,16 @@
+footer{
+    display: flex; 
+    flex-direction: row;
+    background-color: lightcoral;
+    color: white;
+    ul{
+        display: flex;
+        flex-direction: column;
+        align-items: inherit;
+        list-style: none;
+        li a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+}

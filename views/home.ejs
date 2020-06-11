@@ -1,12 +1,9 @@
-        <h1><%= title %></h1>
-        <form action="">
-          <label for="username" > UserName</label>
-          <input id="username" name="username" placeholder="something@abc" required >
-           <label for="password"> Password</label> 
-           <input id="password" name="password" placeholder="enter password" required>
-           <label for="name"> Name</label> 
-           <input id="Name" name="name" placeholder="enter your name" required>
-
-           <button type="submit">SIGN UP</button>
-        </form>
-          
+        <h1>Codeial/ <%= title %></h1>
+       
+     <section id="feed-posts">
+       <h4>Posts</h4>
+       <form action="" id="new-post-form" method="POST">
+         <textarea name="content" cols="30" rows="3"></textarea>
+         <input type="submit" value="post">
+       </form>
+     </section>     

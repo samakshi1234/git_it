@@ -1,0 +1,17 @@
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: lightcoral;
+    color: white;
+    ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        list-style: none;
+        li a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+}

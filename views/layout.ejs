@@ -5,13 +5,15 @@
         </title>
        
         <link rel="stylesheet" href="../css/layouts.css">
+        <link rel="stylesheet" href="../css/header.css">
+        <link rel="stylesheet" href="../css/footer.css">
     </head>
     <body>
           <%- include('_header'); %>
-
+         <main id="layout-main">
            <%- body %>
-          
-        <!-- <%- include('_footer'); %> -->
+         </main>
+        <%- include('_footer'); %>
         <%- script %>
     </body>
 </html>
