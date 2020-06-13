@@ -9,6 +9,8 @@ const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
 const MongoStore=require('connect-mongo')(session);
 const sassMilddleware=require('node-sass-middleware');
+const flash= require('connect-flash');
+const customMware=require('./config/middleware');
 //setup the view engine
 //mongo store is used to store the seession cookie in db
 app.use(session({
@@ -44,7 +46,8 @@ app.use(sassMilddleware({
 app.use(express.urlencoded());
 
 app.use(passport.setAuthenticatedUser);
-
+app.use(flash());
+app.use(customMware.setFlash);
 app.use(express.static('./assests'));
 app.use(expressLayouts);
 
