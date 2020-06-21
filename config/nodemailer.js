@@ -1,5 +1,6 @@
 const nodemailer=require('nodemailer');
-
+const ejs=require('ejs');
+const path=require('path');
 
 let transporter=nodemailer.createTransport({
    service:'gmail',
@@ -7,8 +8,8 @@ let transporter=nodemailer.createTransport({
    port:587,
    secure:false,
    auth:{
-       user:'aggarwalsamantha09@gmail.com',
-       pass:'worldhello'
+       user:'samakshimalhotra24@gmail.com',
+       pass:'lovesamloose'
    }
 });
 
@@ -30,5 +31,4 @@ let renderTemplate=(data,relativePath)=>{
 module.exports = {
     transporter:transporter,
     renderTemplate:renderTemplate
-
 }
