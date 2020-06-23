@@ -1,5 +1,6 @@
 #home-container{
     display: flex;
+    position: relative;
     #feed-posts{
         width:70%;
         padding:10px;
@@ -11,4 +12,5 @@
         border-left: 2px solid lightgrey;
         height:100%;
     }
+
 }

@@ -14,6 +14,11 @@ const flash= require('connect-flash');
 const customMware=require('./config/middleware');
 const passportGoogle= require('./config/passport-google-oath2-strategy');
 const queue = require('./config/kue');
+const chatServer =require('http').Server(app);
+const io=require('socket.io')(chatServer);
+const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(5000);
+console.log('chat server is riunning on port 5000');
 //setup the view engine
 //mongo store is used to store the seession cookie in db
 app.use(session({
