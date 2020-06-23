@@ -13,6 +13,7 @@ const sassMilddleware=require('node-sass-middleware');
 const flash= require('connect-flash');
 const customMware=require('./config/middleware');
 const passportGoogle= require('./config/passport-google-oath2-strategy');
+const queue = require('./config/kue');
 //setup the view engine
 //mongo store is used to store the seession cookie in db
 app.use(session({

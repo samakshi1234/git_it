@@ -28,7 +28,7 @@ module.exports.update= async function(req,res){
                  if(req.file){
                     
                     if(user.avatar){
-                       fs.unlink(path.join(__dirname,'..',user.avatar));
+                       fs.unlinkSync(path.join(__dirname,'..',user.avatar));
                     }
                     
                     //this is saving the path of the uploaded file into the avatar field in the user
@@ -53,7 +53,7 @@ module.exports.signUp=function(req,res){
     {
         return res.redirect('/users/profile');
     }
-    res.render('../views/users_sign_up.ejs',{
+    return res.render('../views/users_sign_up.ejs',{
         title:"Sign Up"
         });
 }
