@@ -2,7 +2,9 @@ footer {
   display: flex;
   flex-direction: row;
   background-color: lightcoral;
-  color: white; }
+  color: white;
+  position: relative;
+  bottom: 0px; }
   footer ul {
     display: flex;
     flex-direction: column;

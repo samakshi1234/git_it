@@ -3,6 +3,8 @@ footer{
     flex-direction: row;
     background-color: lightcoral;
     color: white;
+    position: relative;
+    bottom:0px;
     ul{
         display: flex;
         flex-direction: column;

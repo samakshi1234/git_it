@@ -1,5 +1,7 @@
 const express=require('express');
 const port=8000;
+const env=require('./config/environment');
+const logger =require('morgan');
 const app=express();
 const cookieParser=require('cookie-parser');
 const expressLayouts=require('express-ejs-layouts');
@@ -19,11 +21,12 @@ const io=require('socket.io')(chatServer);
 const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
 chatServer.listen(5000);
 console.log('chat server is riunning on port 5000');
+
 //setup the view engine
 //mongo store is used to store the seession cookie in db
 app.use(session({
     name:'codeial',
-    secret:'blahsomething',
+    secret:env.session_cookie_key,
     saveUninitialized:false,
     resave:false,
     cookie:{
@@ -42,24 +45,26 @@ app.use(session({
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
+const path=require('path');
 
+if(env.name == 'development'){
 app.use(sassMilddleware({
-    src:'./assests/scss',
-    dest:'./assests/css',
+    src:path.join(__dirname,env.asset_path,'/scss'),
+    dest:path.join(__dirname,env.asset_path,'/css'),
     debug:true,
     outputStyle:'extended',
     prefix:'/css'
 }));
-
+}
 app.use(express.urlencoded());
 
 app.use(passport.setAuthenticatedUser);
 app.use(flash());
 app.use(customMware.setFlash);
-app.use(express.static('./assests'));
+app.use(express.static(env.asset_path));
 app.use(expressLayouts);
 app.use('/uploads',express.static(__dirname + '/uploads'));
-
+app.use(logger(env.morgan.mode,env.morgan.options));
 app.set('layout  extractStyles', true);
 app.set('layout extractScripts',true);
 
