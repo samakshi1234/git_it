@@ -61,5 +61,5 @@ const production = {
         }
 }
 
-//  console.log(eval(process.env.Codeial_enviornment));
+ console.log(process.env.Codeial_asset_path);
 module.exports=eval(process.env.Codeial_enviornment)== undefined ? development :production;
