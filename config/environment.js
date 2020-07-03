@@ -22,8 +22,8 @@ const development={
         port:587,
         secure:false,
         auth:{
-            user:'samakshimalhotra24@gmail.com',
-            pass:'lovesamloose'
+            user:'aggarwalsamantha09@gmail.com',
+            pass:'worldhello'
         }
     },
         google_client_id:"916954633676-cssesn0prd24r7kl46iap110c9n3nhpr.apps.googleusercontent.com",
