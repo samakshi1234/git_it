@@ -18,7 +18,9 @@ module.exports.home = async function(req, res){
             populate: {
                 path: 'likes'
             }
-        }).populate('likes');
+        })
+        .populate('likes')
+        .populate('comments');
     
         let users = await User.find({});
 
@@ -35,6 +37,31 @@ module.exports.home = async function(req, res){
    
 }
 
+module.exports.search = async function(req, res){
+    console.log("hi");
+    //console.log(req.xhr);
+    try{
+         let result = await User.find({
+           name: { $regex: ".*" + req.body.searcheduser + ".*" },
+         });
+         console.log(result);
+         if (req.xhr) {
+           console.log("searching all users");
+           return res.status(200).json({
+             data: {
+               result: result,
+             },
+             message: "searching of user completed",
+           });
+         }
+         res.redirect("back");
+         
+    }
+    catch{
+         console.log("Error", err);
+         return;
+    }
+}
 // module.exports.actionName = function(req, res){}
 
 

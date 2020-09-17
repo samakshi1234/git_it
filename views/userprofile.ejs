@@ -1,18 +1,32 @@
 <link rel="stylesheet" href="<%= assetPath('css/userprofile.css') %>">
 
-<h1><%= title %></h1>
-<img src="<%=user.avatar %>" alt="<%=user.name %>" width="100">
-       
-  <% if(user.id ==profile_user.id){%>
-    <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
-       <input type="text" name="name" placeholder="Your name" value="<%=profile_user.name%>" required>
-       <input type="email" name="email" placeholder="Your email" value="<%=profile_user.email%>" required>
-       <input type="file"  name="avatar" placeholder="add profile picture">
-       <input type="submit" value="update" >
-    </form>
+<div class="settings">
+       <h1><%= title %></h1>
+        <div class="field">
+            <div class="field-label">Name</div>
+            <div class="field-value"><%= profile_user.name %></div>
+        </div>
 
-   <% }else{%>  
-    <p><%= profile_user.name %></p>
-    <p><%= profile_user.email %></p>
-    <%} %>
+        <div class="field">
+            <div class="field-label">Email</div>
+            <div class="field-value"><%= profile_user.email %></div>
+        </div>  
+        
+    <% if(user.id ==profile_user.id){%>
+    <div class="img-container">   
+      <img src="<%=user.avatar %>" alt="<%=user.name %>" width="100">
+    </div>
+      <form action="/users/update/<%= profile_user.id %>" enctype="multipart/form-data" method="POST">
+        <input type="text" name="name" placeholder="Your name" value="<%=profile_user.name%>" required>
+        <input type="email" name="email" placeholder="Your email" value="<%=profile_user.email%>" required>
+        <input type="file"  name="avatar" placeholder="add profile picture">
+        <input type="submit" value="update" >
+      </form>
+      <% }else{%>   
+      <div class="btn-grp">
+          <button class="button save-btn">Add Friend</button>
+      </div>
+    <%}%>
+</div>     
+  
  

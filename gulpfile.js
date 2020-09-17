@@ -13,7 +13,7 @@ gulp.task('css', function(done){
     gulp.src('./assests/scss/**/*.scss')
     .pipe(sass())
     .pipe(cssnano())
-    .pipe(gulp.dest('./assets/css'));
+    .pipe(gulp.dest('./assests/css'));
    
     gulp.src('./assests/**/*.css')
     .pipe(rev())

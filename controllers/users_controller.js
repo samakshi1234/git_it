@@ -19,14 +19,15 @@ module.exports.update= async function(req,res){
         try{ 
             let user = await User.findById(req.params.id);
              User.uploadedAvatar(req,res,function(err){
+               //  console.log(req.file);
                  if(err){
                      console.log('*****Multer error');
                  }
                  user.name =req.body.name;
                  user.email =req.body.email;
-
+              
                  if(req.file){
-                    
+               // console.log(req.file);      
                     if(user.avatar){
                        fs.unlinkSync(path.join(__dirname,'..',user.avatar));
                     }

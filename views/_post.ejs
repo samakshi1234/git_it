@@ -1,11 +1,91 @@
 <li id="post-<%= post._id %>">
-  <p>
+<div class="post-wrapper" >
+     <div class="post-header">
+            <div class="post-avatar" >
+                <img
+                  src="<%=post.user.avatar %>"
+                  alt="user-pic"
+                />
+                <div>
+                  <span class="post-author"> <%= post.user.name %></span>
+                  <span class="post-time">a minute ago</span>
+                </div>
+            </div>   
+            
+              <div class="post-content">
+                 <img src="<%=post.postpic %>" alt="<%=post.user.name%>" id="post-pic" style="max-height:300px" >
+
+                <h4><%= post.content %></h4>
+              </div>
+            <div class="post-actions">
+            <% if (locals.user && locals.user.id == post.user.id){ %>
+                <small>
+                    <a class="delete-post-button"  href="/posts/destroy/<%= post.id %>">X</a>
+                </small>
+                
+            <% } %>
+                <div class="post-like">
+                    <span> 
+                        <% if(locals.user) {%>
+                          <a class="toggle-like-button" data-likes="<%= post.likes.length %>"  href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                        <%=post.likes.length %> 
+                         <img
+                         src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
+                         alt="likes-icon"
+                         />
+                         </a> 
+                        <% } else {%>
+                            <%= post.likes.length %> 
+                            <img
+                            src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
+                            alt="likes-icon"
+                            />
+                        <%} %>
+                    </span>
+                </div>
+                 <div class="post-comments-icon">
+                  <img
+                    src="https://image.flaticon.com/icons/svg/1380/1380338.svg"
+                    alt="comments-icon"
+                  />
+                  <span>{post.comments.length}</span>
+                </div>
+              </div>
+
+            <div class="post-comments">
+                    <% if (locals.user){ %>
+                        <form id="post-<%=post._id %>-comments-form" action="/comments/create" method="POST">
+                          <div class="post-comment-box">
+                          <input type="text" name="content" placeholder="Type Here to add comment..." required>
+                          <input type="hidden" name="post" value="<%= post._id %>" >
+                          </div>  
+                          <input type="submit" value="Add Comment">
+                        </form>
+
+                    <% } %>
+            </div>
+            <div class="post-comments-list" id="post-comments-<%= post._id %>">
+               <ul>
+                    <% for (comment of post.comments){%>
+
+                        <%- include('_comment') -%>
+                        
+                    <%} %>
+               </ul>    
+            </div>   
+   </div>  
+</div>  
+</li>
+<!-- <li id="post-<%= post._id %>"> -->
+  <!-- <p>
       <% if (locals.user && locals.user.id == post.user.id){ %>
       <small>
           <a class="delete-post-button"  href="/posts/destroy/<%= post.id %>">X</a>
       </small>
+     
+      <img src="<%=post.postpic %>" alt="<%=post.user.name%>" width="100" >
+     
       <% } %>
-      <%= post.content %>
       <br>
       <small>
           <%= post.user.name %>
@@ -13,36 +93,9 @@
      
       <br>
       <small>
-         <% if(locals.user) {%>
-            <a class="toggle-like-button" data-likes="<%= post.likes.length %>"  href="/likes/toggle/?id=<%=post._id%>&type=Post">
-                <%=post.likes.length %> Likes
-            </a> 
-         <% } else {%>
-            <%= post.likes.length %> Likes
-        <%} %>
+        
       </small>
 
-  </p>
-  <div class="post-comments">
-      <% if (locals.user){ %>
-          <form id="post-<%=post._id %>-comments-form" action="/comments/create" method="POST">
-              <input type="text" name="content" placeholder="Type Here to add comment..." required>
-              <input type="hidden" name="post" value="<%= post._id %>" >
-              <input type="submit" value="Add Comment">
-          </form>
-
-      <% } %>
-
-      <div class="post-comments-list">
-          <ul id="post-comments-<%= post._id %>">
-              <% for (comment of post.comments){%>
-
-                  <%- include('_comment') -%>
-                  
-              
-              <%} %>
-          </ul>
-      </div>
-  </div>
+  </p> -->
   
-</li>
+<!-- </li> -->

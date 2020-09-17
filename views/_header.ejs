@@ -1,20 +1,66 @@
-<header>
-    Codeial
-   
-    <ul >
-      <% if(locals.user){ %>
-         <li ><a href ="/users/profile" ><%= user.name %></a></li>
-         <li> <a href ="/users/sign-out" >Sign out</a></li>
-       <% } else {%>
-         <li>
-             <a href="/users/sign-in">Sign In</a>
-         </li>  
-         <li>
-            <a href="/users/sign-up">Sign Up</a>
-        </li> 
+<header>  
+  <nav class="nav">
+    <div class="left-div">
+        <h1 style="color: honeydew;"> Comexpress </h1>
+    </div>
 
-        <% } %>
-    </ul>
+   <div class="search-container">
+       <form id="search-form" action='/search' method='POST' >  
+          <input type="text" name="searcheduser" id="search-data" placeholder="Search" required/>
+        <input type="submit" style="background:url(https://image.flaticon.com/icons/svg/483/483356.svg); width: 20px; background-color: #ffffff;" >
+        </form>
+        <div class="search-results">
+          <ul>
+            <!-- <li class="search-results-row">
+              <img
+                src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
+                alt="user-dp"
+              />
+             
+            </li>
+            <li class="search-results-row">
+              <img
+                src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
+                alt="user-dp"
+              />
+              <span>John Doe</span>
+            </li> -->
+          </ul>
+        </div>
+    </div>
 
+    <div class="right-nav">
+      
+        <!-- <div class="user">
+          <img
+            src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
+            alt="user-dp"
+            id="user-dp"
+          />
+          <span>John Doe</span>
+        </div> -->
+      <div class="nav-links">
+      <ul >
+        <% if(locals.user){ %>
+           <div class="user">
+          <img
+            src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
+            alt="user-dp"
+            id="user-dp"
+          />
+          <li ><a href ="/users/profile/<%= u.id %>" ><%= user.name %></a></li>
+          <li> <a href ="/users/sign-out" >Sign out</a></li>
+        <% } else {%>
+          <li>
+              <a href="/users/sign-in">Sign In</a>
+          </li>  
+          <li>
+              <a href="/users/sign-up">Sign Up</a>
+          </li> 
 
+          <% } %>
+      </ul>
+      </div>
+   </div>
+  </nav>
 </header>

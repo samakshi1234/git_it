@@ -65,6 +65,8 @@ app.use(customMware.setFlash);
 app.use(express.static(env.asset_path));
 app.use(expressLayouts);
 app.use('/uploads',express.static(__dirname + '/uploads'));
+app.use('/uploads/users/post',express.static(__dirname + '/uploads'));
+
 app.use(logger(env.morgan.mode,env.morgan.options));
 app.set('layout  extractStyles', true);
 app.set('layout extractScripts',true);

@@ -10,7 +10,23 @@
     right: 10px;
     background: white;
 	padding: 5px;
-	box-shadow: 1px 1px 1px 1px lightgrey;
+    box-shadow: 1px 1px 1px 1px lightgrey;
+        .chat-header {
+        	font-size: 20px;
+        	padding: 10px;
+        	background: #6200ee;
+        	color: #fff;
+        	height: 43px;
+        	box-sizing: border-box;
+        	display: flex;
+        	align-items: center;
+        	justify-content: space-between;
+        	img {
+        		&:hover {
+        			cursor: pointer;
+        		}
+        	}
+        }
        #messages{
              position:relative;
              overflow: auto;

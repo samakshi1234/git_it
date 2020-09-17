@@ -1,17 +1,98 @@
 header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: lightcoral;
-    color: white;
-    ul{
+    .nav {
         display: flex;
-        flex-direction: row;
+        background: #6200ee;
+        padding: 10px 20px;
+        align-items: center;
         justify-content: space-between;
-        list-style: none;
-        li a{
-            text-decoration: none;
-            color: white;
+    .search-container {
+        flex-grow: 0.5;
+        position: relative;
+        display: flex;
+        img{
+            .search-icon {
+            height: 20px;
+            position: absolute;
+            top: 10px;
+            left: 7px;
+            }
         }
+        input {
+            background: #ffffff;
+            border: 1px solid #d0d0d0;
+            box-sizing: border-box;
+            border-radius: 3px;
+            height: 40px;
+            width: 100%;
+            font-size: 16px;
+            padding-left: 31px;
+            box-sizing: border-box;
+            flex-grow: 1;
+            &:focus {
+                outline: none;
+            }
+            .logo {
+	        color: #fff;
+	        font-size: 35px;
+            } 
+            .logo-icons {
+                font-size: 40px;
+                color: #ece60e;
+            }
+        }
+        .search-results {
+            background: #fff;
+            flex-grow: 1;
+            border-radius: 0 0 3px 3px;
+            position: absolute;
+            width: 100%;
+            top: 40px;
+            border: 1px solid #e0e0e0;
+            z-index: 100;
+            max-height: 452px;
+            overflow: scroll;
+            ul {
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                .search-results-row {
+                    display: flex;
+                    align-items: center;
+                    padding: 9px 14px;
+                    &:hover {
+                        background-color: #eceffa;
+                        cursor: pointer;
+                    }
+                    img {
+                        height: 27px;
+                    }
+                }
+                a {
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+        }
+   } 
+   .right-nav {
+            display: flex;
+            color: #fff;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 16px;
+            line-height: 22px;
+            .user 
+            {
+            display: flex;
+            align-items: center;
+                  #user-dp {
+                  height: 40px;
+                  }
+                  span {
+                  margin-left: 10px;
+                  }
+            }
+
     }
+  } 
 }

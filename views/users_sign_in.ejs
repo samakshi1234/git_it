@@ -1,12 +1,28 @@
    
-<h1><%= title %></h1>
-<form action="/users/create-session" Method="POST">
+<h1 class="login-signup-header"><%= title %></h1>
+
+<form class="login-form" action="/users/create-session" Method="POST">
+  <div class="field">
   <label for="username" > UserName</label>
-  <input id="username" type="email" name="email" placeholder="something@abc" required >
-   <label for="password"> Password</label> 
+  <input id="username" type="email" name="email" placeholder="enter your email" required >
+  </div> 
+   <div class="field">
+  <label for="password"> Password</label> 
    <input id="password" type="password" name="password" placeholder="enter password" required>
+   </div>
+    <div class="field">
    <button type="submit">SIGN IN</button>
+    </div>
 </form>
-<p>
-  <a href="/users/auth/google">Google Sign In/Sign Up</a>
-</p>
+
+   <div class="links" >
+   <ul> 
+    <li>
+       <a href="/users/auth/google" style="color: black  ; text-decoration: none;">Google Sign In/Sign Up</a>
+       <br>
+    </li>
+    <li>
+       <a href="/forgot/get-email" style="color: black ; text-decoration: none;" >Forgot Password?</a>
+    </li>
+  </ul>
+  </div>

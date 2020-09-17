@@ -1,21 +1,32 @@
-<h1><%= title %></h1>
+<h1 class="login-signup-header"><%= title %></h1>
 
-<form action="/users/create" Method="POST">
+<form class="login-form" action="/users/create" Method="POST">
+    <div class="field">
    <label for="username" > UserName</label>
    <input id="username" type="email" name="email" placeholder="something@abc" required >
-
+   </div>
+    <div class="field">
     <label for="password"> Password</label> 
     <input id="password" type="password" name="password" placeholder="enter password" required>
-
+    </div>
+     <div class="field">
     <label for="password">Confirm Password</label> 
     <input id="password" type="password" name="confirm_password" placeholder="Confirm password" required>
-
+    </div>
+     <div class="field">
     <label for="name"> Name</label> 
     <input id="Name" type="text" name="name" placeholder="enter your name" required>
-
+    </div>
+     <div class="field">
     <button type="submit">SIGN UP</button>
+    </div>
  </form>
-    
- <p>
-    <a href="/users/auth/google">Google Sign In/Sign Up</a>
- </p>
+   
+     <div class="nav-links">
+      <ul>
+         <li>  
+             <a href="/users/auth/google"  style="color: black  ; text-decoration: none;">Google Sign In/Sign Up</a>
+         </li>
+    </ul>
+    </div>
+ 
