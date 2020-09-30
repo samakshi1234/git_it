@@ -206,7 +206,11 @@ code {
 .post-comments-list .comment-like img:hover {
   cursor: pointer;
 }
+#new-post-form{
+  display:flex;
+  flex-direction:column;
 
+}
 /* NAVBAR */
 .nav {
   display: flex;
@@ -228,6 +232,7 @@ nav #user-dp {
 }
 nav .user {
   display: flex;
+  flex-direction: row;
   align-items: center;
 }
 nav span {
@@ -286,9 +291,9 @@ nav .nav-links ul li:hover {
 }
 .search-container {
   flex-grow: 0.5;
-  /* padding: 0 20px; */
   position: relative;
   display: flex;
+  scrollbar-width: none;
 }
 .search-container input {
   background: #ffffff;
@@ -301,15 +306,25 @@ nav .nav-links ul li:hover {
   padding-left: 31px;
   box-sizing: border-box;
   flex-grow: 1;
+  scrollbar-width: none;
 }
 .search-container input:focus {
   outline: none;
+   scrollbar-width: none;
 }
  #search-form{
   display: flex;
   flex-direction: row;
   justify-content: stretch;
+  scrollbar-width: none;
+  width:100%;
 }
+#search-data{
+  width:50%;
+}
+/* #search-form input{
+   width:40%;
+} */
 /* #ip1{
   flex-grow: 2;
 }
@@ -333,7 +348,7 @@ nav .nav-links ul li:hover {
   border: 1px solid #e0e0e0;
   z-index: 100;
   max-height: 452px;
-  overflow: scroll;
+  overflow: auto;
   /* display: none; */
 }
 .search-results ul {
@@ -357,7 +372,11 @@ nav .nav-links ul li:hover {
 .search-results-row img {
   height: 27px;
 }
-
+.fileinputs{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 /* HOME AND FRIENDSLIST COMPONENT */
 .home {
   padding: 20px 50px;
@@ -369,6 +388,29 @@ nav .nav-links ul li:hover {
 }
 .home .posts-list {
   flex-grow: 0.8;
+}
+.chat-button {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+}
+.chat-button .tooltiptext {
+      visibility: hidden;
+      width: 0px;
+      font-size: 0.1px;
+      background-color: lightgray;
+      color: black;
+      text-align: center;
+      border-radius: 6px;
+      padding: 6px 5px;
+      /* Position the tooltip */ }
+.chat-button:hover .tooltiptext {
+    font-size: 13px;
+    margin-left: 10px;
+    visibility: visible;
+    z-index: 1;
+    font-weight: bold;
+    width: 120px;
 }
 #feed-posts{
         width:70%;
@@ -403,6 +445,7 @@ nav .nav-links ul li:hover {
 }
 .friends-item {
   display: flex;
+  flex-direction: row;
   align-items: center;
   padding: 5px 10px;
   color: #616161;
@@ -419,6 +462,7 @@ nav .nav-links ul li:hover {
 .friends-name {
   padding: 0 10px;
 }
+
 
 /* LOGIN & SIGNUP COMPONENTS */
 .login-signup-header {
@@ -479,14 +523,17 @@ nav .nav-links ul li:hover {
   margin-top: 50px;
   margin-left: 30px;
   width: 40%;
+  align-items: center;
 }
 .settings .img-container {
   display: flex;
   margin-bottom: 40px;
+  margin-top: 10px;
   justify-content: center;
 }
 .settings .img-container img {
-  height: 100px;
+  height: 200px;
+  width:100px;
 }
 .settings .btn-grp {
   display: flex;
@@ -516,6 +563,33 @@ nav .nav-links ul li:hover {
   color: #fff;
   border: none;
   padding: 10px 20px;
+}
+.friend-button{
+ border-radius: 6px;
+  padding: 10px;
+  width: 30px;
+  font-size: 16px;
+  border-radius: 3px;
+  margin-top: 20px; 
+}
+.big-container{
+  display:flex;
+  flex-direction: row;
+  width:95%;
+  margin:5px;
+  justify-content: space-between;
+}
+.friends-section{
+  display:flex;
+  flex-direction: column;
+   background: #fff;
+  padding: 30px;
+  border-radius: 6px;
+  margin-top: 50px;
+  /* margin-left: 30px; */
+  width: 30%;
+  height:30%;
+  /* align-items: center; */
 }
 .settings .go-back {
   color: #ef7917;
@@ -589,7 +663,6 @@ footer {
 	 background-color: #6200ee;
 	 color: white;
    position: relative;
-   
 	 bottom: 0px;
 }
 footer ul {

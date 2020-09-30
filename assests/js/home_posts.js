@@ -8,7 +8,7 @@
           
           formData = new FormData(plain_form);
            $("#post-data").val("");
-
+            
           $.ajax({
               type: 'post',
               url: '/posts/create',
@@ -17,11 +17,13 @@
               processData: false,
               data: formData,
               success: function(data){
+                  console.log('data : ',data);
                   $("#post-pic-choose").val("");
                   let newPost = newPostDom(data.data.post);
-                  $('#posts-list-container>ul').prepend(newPost);
+            
+                //   console.log('new posts: ' ,newPost);
+                  $('#posts-list-container > ul').prepend(newPost);
                   deletePost($(' .delete-post-button', newPost));
-
                   // call the create comment class
                   new PostComments(data.data.post._id);
                   new ToggleLike($(' .toggle-like-button', newPost));
@@ -44,13 +46,14 @@
 
   // method to create a post in DOM
   let newPostDom = function(post){
-      //console.log(post);
+      console.log(post);  // check krte h 
+    if(post.postpic){
       return $(`<li id="post-${post._id}">
  <div class="post-wrapper" >
      <div class="post-header">
             <div class="post-avatar" >
                 <img
-                  src="${user.avatar}"
+                  src="${post.user.avatar}"
                   alt="user-pic"
                 />
                 <div>
@@ -107,6 +110,70 @@
 </div>  
                   
               </li>`);
+    }
+    else{
+        return $(`<li id="post-${post._id}">
+ <div class="post-wrapper" >
+     <div class="post-header">
+            <div class="post-avatar" >
+                <img
+                  src="${post.user.avatar}"
+                  alt="user-pic"
+                />
+                <div>
+                  <span class="post-author"> ${post.user.name}</span>
+                  <span class="post-time">a minute ago</span>
+                </div>
+            </div>   
+            
+              <div class="post-content">
+              <h4>${post.content}</h4>
+              </div>
+            <div class="post-actions">
+            
+                <small>
+                    <a class="delete-post-button"  href="/posts/destroy/${post.id}">X</a>
+                </small>
+               
+                <div class="post-like">
+                    <span> 
+                          <a class="toggle-like-button" data-likes="${post.likes.length}"  href="/likes/toggle/?id=${post._id}&type=Post">
+                        ${post.likes.length} 
+                         <img
+                         src="https://image.flaticon.com/icons/svg/1077/1077035.svg"
+                         alt="likes-icon"
+                         />
+                         </a> 
+                    </span>
+                </div>
+                 <div class="post-comments-icon">
+                  <img
+                    src="https://image.flaticon.com/icons/svg/1380/1380338.svg"
+                    alt="comments-icon"
+                  />
+                  <span>${post.comments.length}</span>
+                </div>
+              </div>
+
+            <div class="post-comments">
+                        <form id="post-${post._id}-comments-form" action="/comments/create" method="POST">
+                            <input type="text" name="content" placeholder="Type Here to add comment..." required>
+                            <input type="hidden" name="post" value="${post._id}" >
+                            <input type="submit" value="Add Comment">
+                        </form>
+            </div>
+            <div class="post-comments-list" >
+            
+               <ul id="post-comments-${post._id}">
+                              
+               </ul>
+                   
+            </div>   
+   </div>  
+</div>  
+                  
+              </li>`);   
+    }
   }
 
 

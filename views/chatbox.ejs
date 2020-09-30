@@ -1,13 +1,14 @@
-
+<link rel="stylesheet" href="<%=assetPath('css/chatbox.css')%>">
 <% if(locals.user) {%>
-<div id="chatbox">
+<div id="chatbox"  style="height: 400px; width: 350px;">
    <div class="chat-header">
           Chat
-          <img
-            src="https://www.iconsdb.com/icons/preview/white/minus-5-xxl.png"
+          <i class="fa fa-commenting" aria-hidden="true"></i>
+          <!-- <img
+            src=""
             alt=""
             height=17px
-          >
+          /> -->
         </div>
     <ul id="messages">
       <li class="other-message"><span>Other message</span></li>

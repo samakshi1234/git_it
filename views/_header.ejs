@@ -1,30 +1,17 @@
 <header>  
-  <nav class="nav">
+  <nav class="nav" style="background-color: #6200ee;">
     <div class="left-div">
         <h1 style="color: honeydew;"> Comexpress </h1>
     </div>
 
    <div class="search-container">
        <form id="search-form" action='/search' method='POST' >  
-          <input type="text" name="searcheduser" id="search-data" placeholder="Search" required/>
-        <input type="submit" style="background:url(https://image.flaticon.com/icons/svg/483/483356.svg); width: 20px; background-color: #ffffff;" >
+          <input type="text" name="searcheduser" id="search-data" style="width:95%" placeholder="Search" required/>
+        <input type="submit" value="" style="background:url(https://image.flaticon.com/icons/svg/483/483356.svg); width: 10px; background-color: #ffffff;" >
         </form>
         <div class="search-results">
           <ul>
-            <!-- <li class="search-results-row">
-              <img
-                src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-                alt="user-dp"
-              />
-             
-            </li>
-            <li class="search-results-row">
-              <img
-                src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
-                alt="user-dp"
-              />
-              <span>John Doe</span>
-            </li> -->
+           
           </ul>
         </div>
     </div>
@@ -48,7 +35,7 @@
             alt="user-dp"
             id="user-dp"
           />
-          <li ><a href ="/users/profile/<%= u.id %>" ><%= user.name %></a></li>
+          <li ><a href ="/users/profile/<%= user.id %>" ><%= user.name %></a></li>
           <li> <a href ="/users/sign-out" >Sign out</a></li>
         <% } else {%>
           <li>

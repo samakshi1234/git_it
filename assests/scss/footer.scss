@@ -2,9 +2,9 @@ footer{
     display: flex; 
     flex-direction: row;
     background-color: #6200ee;
-    color: white;
-    position: relative;
     bottom:0px;
+    color: white;
+    position: fixed;
     ul{
         display: flex;
         flex-direction: column;

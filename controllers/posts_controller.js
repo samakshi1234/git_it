@@ -9,7 +9,9 @@ module.exports.create = async function(req, res){
       try {
         await Post.uploadedPic(req, res, async function (err) {
           try{
-                console.log(req.file);
+                // console.log('req: ',req);// are you sure req.file gives any file Y?? yes are you using multer for saving it ?yes
+                console.log("upload file : " , req.file);
+                console.log('req user : ',req.user );
                 if (req.file)
                 {
                     let post = await Post.create({
@@ -21,7 +23,7 @@ module.exports.create = async function(req, res){
                     //console.log(post);
                 
                 // console.log(post.postpic);
-                post = await post.populate("user", "name ").execPopulate();
+                post = await post.populate("user", "name avatar").execPopulate();
                 if (req.xhr) {
                     // if we want to populate just the name of the user (we'll not want to send the password in the API), this is how we do it
                     return res.status(200).json({

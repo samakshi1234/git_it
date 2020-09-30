@@ -3,13 +3,39 @@ const User=require('../models/users');
 const fs=require('fs');
 const path=require('path');
 //this is going to controll many users
-module.exports.profile = function(req, res){
-    User.findById(req.params.id,function(err,user){
+module.exports.profile =async function(req, res){
+      let user=await User.findById(req.params.id)
+    .populate('friendReq')
+    .populate('friendships');
+        let k=0;
+        for(u of user.friendships)
+        {
+               if(u._id==req.user.id)
+               {
+                   k=2;
+                   break;
+               }
+        }
+        if(k!=2)
+        {
+                for(u of user.friendReq)
+                {
+                    if(u._id==req.user.id)
+                    {
+                        console.log('break');
+                        k=1;
+                        break;
+                    }
+                }
+        }
+    
         return res.render('userprofile', {
             title: 'User Profile',
-            profile_user:user
+            profile_user: user,
+            list: user.friendReq,
+            all_users: user.friendships,
+            k:k
         });
-    });
   
 }
 

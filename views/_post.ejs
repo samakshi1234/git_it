@@ -2,10 +2,14 @@
 <div class="post-wrapper" >
      <div class="post-header">
             <div class="post-avatar" >
+              <% if(post.user.avatar){%>
                 <img
                   src="<%=post.user.avatar %>"
                   alt="user-pic"
                 />
+                <%}else{%>
+                  <!-- <i style="margin-right: 3px; padding: 2px;" class="fas fa-user-friends"></i> -->
+                <%}%>
                 <div>
                   <span class="post-author"> <%= post.user.name %></span>
                   <span class="post-time">a minute ago</span>
@@ -13,8 +17,11 @@
             </div>   
             
               <div class="post-content">
+                 <% if(post.postpic){%>
                  <img src="<%=post.postpic %>" alt="<%=post.user.name%>" id="post-pic" style="max-height:300px" >
-
+                 <%}else{%>
+                  <!-- <i style="margin-right: 3px; padding: 2px;" class="fas fa-user-friends"></i> -->
+                <%}%> 
                 <h4><%= post.content %></h4>
               </div>
             <div class="post-actions">
@@ -48,7 +55,7 @@
                     src="https://image.flaticon.com/icons/svg/1380/1380338.svg"
                     alt="comments-icon"
                   />
-                  <span>{post.comments.length}</span>
+                  <span><%= post.comments.length %></span>
                 </div>
               </div>
 
